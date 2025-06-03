@@ -16,6 +16,7 @@ services.AddDbContext<PaymentServiceDbContext>(opt => opt.UseNpgsql(dbDataSource
 
 builder.Services.AddControllers();
 services.AddHostedService<KafkaConsumerService>();
+services.AddHostedService<PaymentProcessor>();
 
 services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(assembly));
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

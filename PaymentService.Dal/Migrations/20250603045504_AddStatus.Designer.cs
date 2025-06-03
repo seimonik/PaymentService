@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using PaymentService.Dal;
@@ -12,9 +13,11 @@ using PaymentService.Dal.Enums;
 namespace PaymentService.Dal.Migrations
 {
     [DbContext(typeof(PaymentServiceDbContext))]
-    partial class PaymentServiceDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250603045504_AddStatus")]
+    partial class AddStatus
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

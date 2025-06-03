@@ -21,7 +21,8 @@ public static class PayOff
 
 		public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
 		{
-			var payment = _dbContext.Payments.FirstOrDefault(x => x.BookingId == request.BookingId);
+			var payment = _dbContext.Payments.FirstOrDefault(x => x.BookingId == request.BookingId && x.Status == Dal.Enums.PaymentStatus.Pending);
+			// TODO: If payment is null
 			payment!.Status = Dal.Enums.PaymentStatus.Confirmed;
 			await _dbContext.SaveChangesAsync(cancellationToken);
 			var updateBookingStatusRequest = new UpdateBookingStatusRequest
